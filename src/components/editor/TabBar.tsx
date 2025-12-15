@@ -47,7 +47,7 @@ export function TabBar({ paneId }: TabBarProps) {
   };
 
   return (
-    <div className="flex items-center bg-slate-900 border-b border-white/10 overflow-x-auto scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
+    <div className="flex items-center bg-black border-b border-white/10 overflow-x-auto scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
       {pane.tabs.map((tab) => (
         <div
           key={tab.id}
@@ -55,8 +55,8 @@ export function TabBar({ paneId }: TabBarProps) {
           className={`
             group flex items-center gap-2 px-4 py-2 border-r border-white/10 cursor-pointer min-w-[120px] max-w-[200px] relative
             ${tab.id === pane.activeTabId 
-              ? 'bg-slate-800 text-white' 
-              : 'bg-slate-900 text-gray-400 hover:bg-slate-850 hover:text-gray-200'
+              ? 'bg-white/5 text-white' 
+              : 'bg-black text-white/60 hover:bg-white/5 hover:text-white/80'
             }
           `}
         >
@@ -78,7 +78,7 @@ export function TabBar({ paneId }: TabBarProps) {
           </button>
 
           {tab.id === pane.activeTabId && (
-            <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-purple-500" />
+            <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-white shadow-[0_0_10px_rgba(255,255,255,0.5)]" />
           )}
         </div>
       ))}

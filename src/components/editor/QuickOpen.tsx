@@ -66,15 +66,15 @@ export function QuickOpen() {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center pt-[20vh] bg-black/60 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-start justify-center pt-[20vh] bg-black/80 backdrop-blur-sm"
       onClick={handleClose}
     >
       <div
-        className="w-full max-w-2xl mx-4 rounded-xl bg-slate-900 border border-purple-500/30 shadow-2xl shadow-purple-500/20 overflow-hidden"
+        className="w-full max-w-2xl mx-4 rounded-xl bg-black border border-white/20 shadow-[0_0_50px_rgba(255,255,255,0.2)] overflow-hidden backdrop-blur-xl"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative border-b border-white/10">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/60" />
           <input
             ref={inputRef}
             type="text"
@@ -82,13 +82,13 @@ export function QuickOpen() {
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Type to search files..."
-            className="w-full pl-12 pr-4 py-4 bg-transparent text-white placeholder:text-gray-500 focus:outline-none text-lg"
+            className="w-full pl-12 pr-4 py-4 bg-transparent text-white placeholder:text-white/40 focus:outline-none text-lg"
           />
         </div>
 
         <div className="max-h-[400px] overflow-auto">
           {filteredFiles.length === 0 ? (
-            <div className="p-8 text-center text-gray-400">
+            <div className="p-8 text-center text-white/60">
               {query ? `No files found matching "${query}"` : 'No files in project'}
             </div>
           ) : (
@@ -104,13 +104,13 @@ export function QuickOpen() {
                     onClick={() => handleFileClick(file)}
                     className={`
                       flex items-center gap-3 px-4 py-3 cursor-pointer transition-colors
-                      ${index === selectedIndex ? 'bg-purple-600 text-white' : 'hover:bg-white/5 text-gray-300'}
+                      ${index === selectedIndex ? 'bg-white/10 text-white shadow-[0_0_15px_rgba(255,255,255,0.1)]' : 'hover:bg-white/5 text-white/80'}
                     `}
                   >
                     <File className="w-4 h-4 flex-shrink-0" />
                     <div className="flex-1 min-w-0">
                       <div className="font-medium truncate">{file.name}</div>
-                      <div className={`text-xs truncate ${index === selectedIndex ? 'text-purple-200' : 'text-gray-500'}`}>
+                      <div className={`text-xs truncate ${index === selectedIndex ? 'text-white/70' : 'text-white/50'}`}>
                         {filePath}
                       </div>
                     </div>
@@ -121,7 +121,7 @@ export function QuickOpen() {
           )}
         </div>
 
-        <div className="px-4 py-2 border-t border-white/10 bg-slate-950 text-xs text-gray-400 flex items-center justify-between">
+        <div className="px-4 py-2 border-t border-white/10 bg-black text-xs text-white/60 flex items-center justify-between">
           <span>Use ↑↓ to navigate</span>
           <span>↵ to open • ESC to close</span>
         </div>

@@ -71,9 +71,9 @@ export default function EditorPage() {
 
   if (!currentProject) {
     return (
-      <div className="h-screen flex items-center justify-center bg-slate-950 text-white">
+      <div className="h-screen flex items-center justify-center bg-black text-white">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <div className="w-16 h-16 border-4 border-white border-t-transparent rounded-full animate-spin mx-auto mb-4 shadow-[0_0_20px_rgba(255,255,255,0.3)]" />
           <p>Loading project...</p>
         </div>
       </div>
@@ -81,19 +81,19 @@ export default function EditorPage() {
   }
 
   return (
-    <div className="h-screen flex flex-col bg-slate-900">
-      <header className="h-12 bg-slate-950 border-b border-white/10 flex items-center justify-between px-4">
+    <div className="h-screen flex flex-col bg-black">
+      <header className="h-12 bg-black border-b border-white/10 flex items-center justify-between px-4">
         <div className="flex items-center gap-3">
           <button
             onClick={toggleSidebar}
             className="p-2 hover:bg-white/10 rounded transition-colors"
             title="Toggle Sidebar (Ctrl+B)"
           >
-            <PanelLeft className="w-4 h-4 text-gray-300" />
+            <PanelLeft className="w-4 h-4 text-white/70" />
           </button>
 
           <div className="flex items-center gap-2">
-            <Code2 className="w-5 h-5 text-purple-500" />
+            <Code2 className="w-5 h-5 text-white" />
             <span className="font-semibold text-white text-sm">{currentProject.name}</span>
           </div>
         </div>
@@ -105,11 +105,12 @@ export default function EditorPage() {
                 await downloadProjectAsZip(currentProject);
               }
             }}
-            className="flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white rounded-lg transition-all duration-200 shadow-lg shadow-green-500/30 hover:shadow-green-500/50"
+            className="group relative flex items-center gap-2 px-3 py-2 bg-white hover:bg-white/90 text-black rounded-lg transition-all duration-200 shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] overflow-hidden"
             title="Download Project"
           >
-            <Download className="w-4 h-4" />
-            <span className="text-sm font-medium">Download</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/50 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+            <Download className="w-4 h-4 relative z-10" />
+            <span className="text-sm font-medium relative z-10">Download</span>
           </button>
 
           <button
@@ -117,7 +118,7 @@ export default function EditorPage() {
             className="p-2 hover:bg-white/10 rounded transition-colors"
             title="Home"
           >
-            <Home className="w-4 h-4 text-gray-300" />
+            <Home className="w-4 h-4 text-white/70" />
           </button>
 
           <div className="relative">
@@ -126,11 +127,11 @@ export default function EditorPage() {
               className="p-2 hover:bg-white/10 rounded transition-colors"
               title="Menu"
             >
-              <Menu className="w-4 h-4 text-gray-300" />
+              <Menu className="w-4 h-4 text-white/70" />
             </button>
 
             {showMenu && (
-              <div className="absolute right-0 top-full mt-2 w-56 bg-slate-800 border border-white/10 rounded-lg shadow-xl py-1 z-50">
+              <div className="absolute right-0 top-full mt-2 w-56 bg-black border border-white/20 rounded-lg shadow-[0_0_30px_rgba(255,255,255,0.2)] py-1 z-50 backdrop-blur-xl">
                 <button
                   onClick={async () => {
                     if (currentProject) {
@@ -211,10 +212,10 @@ export default function EditorPage() {
                 {panes.length > 1 && (
                   <button
                     onClick={() => closePane(panes[1].id)}
-                    className="absolute top-2 right-2 p-1 bg-slate-800 hover:bg-slate-700 rounded border border-white/10 z-10"
+                    className="absolute top-2 right-2 p-1 bg-white/10 hover:bg-white/20 rounded border border-white/20 z-10 backdrop-blur-sm"
                     title="Close pane"
                   >
-                    <CloseIcon className="w-3 h-3 text-gray-400" />
+                    <CloseIcon className="w-3 h-3 text-white" />
                   </button>
                 )}
               </div>
@@ -229,10 +230,10 @@ export default function EditorPage() {
                 {panes.length > 1 && (
                   <button
                     onClick={() => closePane(panes[1].id)}
-                    className="absolute top-2 right-2 p-1 bg-slate-800 hover:bg-slate-700 rounded border border-white/10 z-10"
+                    className="absolute top-2 right-2 p-1 bg-white/10 hover:bg-white/20 rounded border border-white/20 z-10 backdrop-blur-sm"
                     title="Close pane"
                   >
-                    <CloseIcon className="w-3 h-3 text-gray-400" />
+                    <CloseIcon className="w-3 h-3 text-white" />
                   </button>
                 )}
               </div>

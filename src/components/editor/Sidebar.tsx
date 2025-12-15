@@ -11,15 +11,15 @@ export function Sidebar() {
   if (!sidebarOpen || !currentProject) return null;
 
   return (
-    <div className="flex h-full bg-slate-900 border-r border-white/10">
-      <div className="w-12 bg-slate-950 border-r border-white/10 flex flex-col items-center py-2 gap-1">
+    <div className="flex h-full bg-black border-r border-white/10">
+      <div className="w-12 bg-black border-r border-white/10 flex flex-col items-center py-2 gap-1">
         <button
           onClick={() => setActiveSidebarPanel('explorer')}
           className={`
             w-10 h-10 flex items-center justify-center rounded transition-colors
             ${activeSidebarPanel === 'explorer' 
-              ? 'bg-white/10 text-white' 
-              : 'text-gray-400 hover:text-white hover:bg-white/5'
+              ? 'bg-white/10 text-white shadow-[0_0_15px_rgba(255,255,255,0.2)]' 
+              : 'text-white/60 hover:text-white hover:bg-white/5'
             }
           `}
           title="Explorer"
@@ -32,8 +32,8 @@ export function Sidebar() {
           className={`
             w-10 h-10 flex items-center justify-center rounded transition-colors
             ${activeSidebarPanel === 'search' 
-              ? 'bg-white/10 text-white' 
-              : 'text-gray-400 hover:text-white hover:bg-white/5'
+              ? 'bg-white/10 text-white shadow-[0_0_15px_rgba(255,255,255,0.2)]' 
+              : 'text-white/60 hover:text-white hover:bg-white/5'
             }
           `}
           title="Search"
