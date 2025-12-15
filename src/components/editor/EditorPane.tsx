@@ -24,7 +24,7 @@ export function EditorPane({ paneId }: EditorPaneProps) {
 
   return (
     <div 
-      className={`flex flex-col h-full ${activePane === paneId ? 'ring-1 ring-purple-500/50' : ''}`}
+      className={`flex flex-col h-full ${activePane === paneId ? 'ring-1 ring-white/30' : ''}`}
       onClick={() => setActivePane(paneId)}
     >
       {pane.tabs.length > 0 ? (
@@ -54,16 +54,17 @@ function EmptyEditor() {
   const { currentProject, setQuickOpenVisible } = useEditorStore();
 
   return (
-    <div className="flex-1 flex flex-col items-center justify-center bg-slate-900 text-gray-400">
-      <Code2 className="w-16 h-16 mb-4 text-purple-500/30" />
-      <h3 className="text-lg font-semibold mb-2">No file open</h3>
+    <div className="flex-1 flex flex-col items-center justify-center bg-black text-white/60">
+      <Code2 className="w-16 h-16 mb-4 text-white/20" />
+      <h3 className="text-lg font-semibold mb-2 text-white">No file open</h3>
       <p className="text-sm mb-4">Select a file from the explorer or use quick open</p>
       {currentProject && (
         <button
           onClick={() => setQuickOpenVisible(true)}
-          className="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg text-sm transition-colors"
+          className="group relative px-4 py-2 bg-white hover:bg-white/90 text-black rounded-lg text-sm transition-all shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] overflow-hidden"
         >
-          Quick Open (Ctrl+P)
+          <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/50 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+          <span className="relative z-10">Quick Open (Ctrl+P)</span>
         </button>
       )}
     </div>

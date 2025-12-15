@@ -31,17 +31,17 @@ export function CreateFileModal({ isOpen, type, onClose, onCreate }: CreateFileM
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
       onClick={handleClose}
     >
       <div
-        className="w-full max-w-md mx-4 rounded-xl bg-slate-900 border border-purple-500/30 shadow-2xl shadow-purple-500/20 overflow-hidden"
+        className="w-full max-w-md mx-4 rounded-xl bg-black border border-white/20 shadow-[0_0_50px_rgba(255,255,255,0.2)] overflow-hidden backdrop-blur-xl"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
           <div className="flex items-center gap-2">
             {type === 'file' ? (
-              <File className="w-5 h-5 text-purple-400" />
+              <File className="w-5 h-5 text-white" />
             ) : (
               <Folder className="w-5 h-5 text-blue-400" />
             )}
@@ -53,12 +53,12 @@ export function CreateFileModal({ isOpen, type, onClose, onCreate }: CreateFileM
             onClick={handleClose}
             className="p-1 hover:bg-white/10 rounded transition-colors"
           >
-            <X className="w-5 h-5 text-gray-400" />
+            <X className="w-5 h-5 text-white/60" />
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="p-6">
-          <label className="block text-sm font-medium text-purple-300 mb-2">
+          <label className="block text-sm font-medium text-white/70 mb-2">
             {type === 'file' ? 'File' : 'Folder'} Name
           </label>
           <input
@@ -66,7 +66,7 @@ export function CreateFileModal({ isOpen, type, onClose, onCreate }: CreateFileM
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder={type === 'file' ? 'example.js' : 'folder-name'}
-            className="w-full px-4 py-3 bg-slate-800 border border-purple-500/30 rounded-lg text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 transition-all"
+            className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/40 transition-all backdrop-blur-sm"
             autoFocus
           />
 
@@ -74,16 +74,17 @@ export function CreateFileModal({ isOpen, type, onClose, onCreate }: CreateFileM
             <button
               type="button"
               onClick={handleClose}
-              className="flex-1 px-4 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-lg font-medium transition-all duration-200"
+              className="flex-1 px-4 py-3 bg-white/10 hover:bg-white/15 text-white rounded-lg font-medium transition-all duration-200 border border-white/10"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={!name.trim()}
-              className="flex-1 px-4 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 disabled:from-slate-700 disabled:to-slate-700 text-white rounded-lg font-medium transition-all duration-200 shadow-lg shadow-purple-500/30 disabled:shadow-none disabled:cursor-not-allowed"
+              className="group relative flex-1 px-4 py-3 bg-white hover:bg-white/90 disabled:bg-white/10 text-black disabled:text-white/40 rounded-lg font-medium transition-all duration-200 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] disabled:shadow-none disabled:cursor-not-allowed overflow-hidden"
             >
-              Create
+              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/50 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+              <span className="relative z-10">Create</span>
             </button>
           </div>
         </form>

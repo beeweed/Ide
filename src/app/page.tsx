@@ -58,29 +58,30 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-slate-950 via-purple-950 to-slate-900">
+    <div className="min-h-screen w-full bg-black">
       <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
       
       <div className="relative z-10 min-h-screen flex flex-col">
-        <header className="border-b border-white/10 backdrop-blur-xl bg-black/20">
+        <header className="border-b border-white/10 backdrop-blur-xl bg-black/80">
           <div className="max-w-7xl mx-auto px-8 py-6">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-lg shadow-purple-500/50">
+                <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center shadow-lg shadow-white/20 backdrop-blur-sm border border-white/20">
                   <Code2 className="w-7 h-7 text-white" />
                 </div>
                 <div>
                   <h1 className="text-2xl font-bold text-white tracking-tight">WebCode Studio</h1>
-                  <p className="text-sm text-purple-300">Browser-based Code Editor</p>
+                  <p className="text-sm text-white/60">Browser-based Code Editor</p>
                 </div>
               </div>
               
               <button
                 onClick={() => setShowCreateModal(true)}
-                className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white rounded-xl font-medium transition-all duration-200 shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 hover:scale-105"
+                className="group relative flex items-center gap-2 px-6 py-3 bg-white hover:bg-white/90 text-black rounded-xl font-medium transition-all duration-200 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] hover:scale-105 overflow-hidden"
               >
-                <Plus className="w-5 h-5" />
-                New Project
+                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/50 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                <Plus className="w-5 h-5 relative z-10" />
+                <span className="relative z-10">New Project</span>
               </button>
             </div>
           </div>
@@ -89,19 +90,20 @@ export default function HomePage() {
         <main className="flex-1 max-w-7xl w-full mx-auto px-8 py-12">
           {projects.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-24">
-              <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center mb-6 border border-purple-500/20">
-                <FolderOpen className="w-12 h-12 text-purple-400" />
+              <div className="w-24 h-24 rounded-2xl bg-white/10 flex items-center justify-center mb-6 border border-white/20 backdrop-blur-sm shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                <FolderOpen className="w-12 h-12 text-white" />
               </div>
               <h2 className="text-3xl font-bold text-white mb-3">No projects yet</h2>
-              <p className="text-purple-300 mb-8 text-center max-w-md">
+              <p className="text-white/60 mb-8 text-center max-w-md">
                 Create your first project to start coding in your browser with full Monaco Editor support
               </p>
               <button
                 onClick={() => setShowCreateModal(true)}
-                className="flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white rounded-xl font-medium transition-all duration-200 shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 hover:scale-105"
+                className="group relative flex items-center gap-2 px-8 py-4 bg-white hover:bg-white/90 text-black rounded-xl font-medium transition-all duration-200 shadow-[0_0_30px_rgba(255,255,255,0.3)] hover:shadow-[0_0_40px_rgba(255,255,255,0.5)] hover:scale-105 overflow-hidden"
               >
-                <Plus className="w-5 h-5" />
-                Create Your First Project
+                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/50 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                <Plus className="w-5 h-5 relative z-10" />
+                <span className="relative z-10">Create Your First Project</span>
               </button>
             </div>
           ) : (
@@ -112,11 +114,11 @@ export default function HomePage() {
                   <div
                     key={project.id}
                     onClick={() => handleOpenProject(project.id)}
-                    className="group relative p-6 rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl border border-white/10 hover:border-purple-500/50 transition-all duration-300 cursor-pointer hover:shadow-xl hover:shadow-purple-500/20 hover:scale-105"
+                    className="group relative p-6 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/30 transition-all duration-300 cursor-pointer hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] hover:scale-105"
                   >
                     <div className="flex items-start justify-between mb-4">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center border border-purple-500/30">
-                        <Code2 className="w-6 h-6 text-purple-400" />
+                      <div className="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center border border-white/20 backdrop-blur-sm">
+                        <Code2 className="w-6 h-6 text-white" />
                       </div>
                       <button
                         onClick={(e) => handleDeleteProject(project.id, e)}
@@ -128,13 +130,13 @@ export default function HomePage() {
                     
                     <h3 className="text-lg font-semibold text-white mb-2 truncate">{project.name}</h3>
                     
-                    <div className="flex items-center gap-2 text-sm text-purple-300">
+                    <div className="flex items-center gap-2 text-sm text-white/60">
                       <Calendar className="w-4 h-4" />
                       <span>{formatDate(project.lastModified)}</span>
                     </div>
 
                     <div className="mt-4 pt-4 border-t border-white/10">
-                      <div className="flex items-center gap-2 text-xs text-purple-400">
+                      <div className="flex items-center gap-2 text-xs text-white/70">
                         <FolderOpen className="w-3 h-3" />
                         <span>{project.rootFolder.children?.length || 0} files</span>
                       </div>
@@ -148,15 +150,15 @@ export default function HomePage() {
       </div>
 
       {showCreateModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
           <div className="w-full max-w-md mx-4">
-            <div className="rounded-2xl bg-slate-900 border border-purple-500/30 shadow-2xl shadow-purple-500/20 overflow-hidden">
+            <div className="rounded-2xl bg-black border border-white/20 shadow-[0_0_50px_rgba(255,255,255,0.2)] overflow-hidden">
               <div className="px-6 py-5 border-b border-white/10">
                 <h3 className="text-xl font-bold text-white">Create New Project</h3>
               </div>
               
               <form onSubmit={handleCreateProject} className="p-6">
-                <label className="block text-sm font-medium text-purple-300 mb-2">
+                <label className="block text-sm font-medium text-white/70 mb-2">
                   Project Name
                 </label>
                 <input
@@ -164,7 +166,7 @@ export default function HomePage() {
                   value={newProjectName}
                   onChange={(e) => setNewProjectName(e.target.value)}
                   placeholder="my-awesome-project"
-                  className="w-full px-4 py-3 bg-slate-800 border border-purple-500/30 rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 transition-all"
+                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/40 transition-all backdrop-blur-sm"
                   autoFocus
                 />
                 
@@ -175,16 +177,17 @@ export default function HomePage() {
                       setShowCreateModal(false);
                       setNewProjectName('');
                     }}
-                    className="flex-1 px-4 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-medium transition-all duration-200"
+                    className="flex-1 px-4 py-3 bg-white/10 hover:bg-white/15 text-white rounded-xl font-medium transition-all duration-200 border border-white/10"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
                     disabled={!newProjectName.trim()}
-                    className="flex-1 px-4 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 disabled:from-slate-700 disabled:to-slate-700 text-white rounded-xl font-medium transition-all duration-200 shadow-lg shadow-purple-500/30 disabled:shadow-none disabled:cursor-not-allowed"
+                    className="group relative flex-1 px-4 py-3 bg-white hover:bg-white/90 disabled:bg-white/10 text-black disabled:text-white/40 rounded-xl font-medium transition-all duration-200 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] disabled:shadow-none disabled:cursor-not-allowed overflow-hidden"
                   >
-                    Create
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/50 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                    <span className="relative z-10">Create</span>
                   </button>
                 </div>
               </form>
