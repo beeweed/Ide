@@ -20,10 +20,10 @@ export default function HomePage() {
     setProjects(allProjects.sort((a, b) => b.lastModified - a.lastModified));
   };
 
-  const handleCreateProject = (e: React.FormEvent) => {
+  const handleCreateProject = async (e: React.FormEvent) => {
     e.preventDefault();
     if (newProjectName.trim()) {
-      const project = FileSystem.createProject(newProjectName.trim());
+      const project = await FileSystem.createProject(newProjectName.trim());
       setShowCreateModal(false);
       setNewProjectName('');
       router.push(`/editor/${project.id}`);

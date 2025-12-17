@@ -17,6 +17,23 @@ export interface Project {
 
 const PROJECTS_KEY = 'vscode-web-projects';
 
+// Fetch template from API
+async function fetchTemplate(): Promise<FileNode[]> {
+  try {
+    const response = await fetch('/api/template');
+    const data = await response.json();
+    
+    if (data.success && data.template) {
+      return data.template;
+    }
+  } catch (error) {
+    console.error('Failed to fetch template:', error);
+  }
+  
+  // Fallback to empty array if template fetch fails
+  return [];
+}
+
 export class FileSystem {
   static getAllProjects(): Project[] {
     const data = localStorage.getItem(PROJECTS_KEY);
@@ -28,7 +45,9 @@ export class FileSystem {
     return projects.find(p => p.id === projectId) || null;
   }
 
-  static createProject(name: string): Project {
+  static async createProject(name: string): Promise<Project> {
+    const templateFiles = await fetchTemplate();
+    
     const project: Project = {
       id: crypto.randomUUID(),
       name,
@@ -38,47 +57,7 @@ export class FileSystem {
         id: crypto.randomUUID(),
         name: name,
         type: 'folder',
-        children: [
-          {
-            id: crypto.randomUUID(),
-            name: 'index.html',
-            type: 'file',
-            content: `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to ${name}</title>
-</head>
-<body>
-  <h1>Hello, World!</h1>
-</body>
-</html>`,
-          },
-          {
-            id: crypto.randomUUID(),
-            name: 'styles.css',
-            type: 'file',
-            content: `body {
-  font-family: system-ui, -apple-system, sans-serif;
-  margin: 0;
-  padding: 20px;
-}
-
-h1 {
-  color: #333;
-}`,
-          },
-          {
-            id: crypto.randomUUID(),
-            name: 'script.js',
-            type: 'file',
-            content: `console.log('Welcome to ${name}!');
-
-// Your code here
-`,
-          },
-        ],
+        children: templateFiles,
       },
     };
 

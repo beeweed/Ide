@@ -197,10 +197,31 @@ The app is fully static and can be deployed to:
 
 ## 📝 Default Project Template
 
-Every new project includes:
-- `index.html` - Basic HTML template
-- `styles.css` - CSS starter file
-- `script.js` - JavaScript starter file
+Every new project includes the complete TypeScript Template from [bscotch/typescript-template](https://github.com/bscotch/typescript-template):
+
+**Project Structure:**
+- `src/` - Source code directory
+  - `lib/` - Library modules with sample code
+  - `cli/` - Command-line interface setup
+  - `test/` - Mocha test suite with sample tests
+  - `types/` - TypeScript type definitions
+  - `index.ts` - Main entry point
+- `package.json` - NPM package configuration with scripts
+- `tsconfig.json` - TypeScript compiler configuration
+- `README.md` - Project documentation
+- `.eslintrc` - ESLint configuration
+- `.prettierrc` - Prettier code formatting
+- `.gitignore` - Git ignore rules
+- And more configuration files
+
+**Features:**
+- 🚀 Modern TypeScript setup ready for development
+- 📦 Configured for npm publishing
+- 🧪 Test suite with Mocha and Chai
+- 💻 CLI support with Commander.js
+- ✨ Code formatting with Prettier
+- 🔬 Linting with ESLint and TypeScript
+- 📝 Comprehensive documentation
 
 ## 🔒 Privacy & Security
 

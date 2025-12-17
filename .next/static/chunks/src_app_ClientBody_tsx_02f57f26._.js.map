@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///workspace/Ide/src/app/ClientBody.tsx"],"sourcesContent":["\"use client\";\n\nimport { useEffect } from \"react\";\n\nexport default function ClientBody({\n  children,\n}: {\n  children: React.ReactNode;\n}) {\n  // Remove any extension-added classes during hydration\n  useEffect(() => {\n    // This runs only on the client after hydration\n    document.body.className = \"antialiased\";\n  }, []);\n\n  return <div className=\"antialiased\">{children}</div>;\n}\n"],"names":[],"mappings":";;;;;AAEA;;;AAFA;;AAIe,SAAS,WAAW,KAIlC;QAJkC,EACjC,QAAQ,EAGT,GAJkC;;IAKjC,sDAAsD;IACtD,IAAA,0KAAS;gCAAC;YACR,+CAA+C;YAC/C,SAAS,IAAI,CAAC,SAAS,GAAG;QAC5B;+BAAG,EAAE;IAEL,qBAAO,6LAAC;QAAI,WAAU;kBAAe;;;;;;AACvC;GAZwB;KAAA","debugId":null}}]
+}
